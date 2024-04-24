@@ -97,6 +97,7 @@ class ImportService implements ImportInterface
         $filename = $this->importDirectory . \DIRECTORY_SEPARATOR . ImportExportDefaultMap::FILENAME_UPLOADS;
         $path = $this->uploadsDirectory . \DIRECTORY_SEPARATOR;
         $process = Process::fromShellCommandline("tar -xvf {$filename} {$path}");
+        $process->setTimeout(3600);
         $process->run();
         if (!$process->isSuccessful()) {
             throw new ProcessFailedException($process);

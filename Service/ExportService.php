@@ -91,7 +91,7 @@ class ExportService implements ExportInterface
         $process = Process::fromShellCommandline(
             'tar cvf ' . $this->exportDirectory . \DIRECTORY_SEPARATOR . ImportExportDefaultMap::FILENAME_UPLOADS . " {$this->uploadsDirectory}"
         );
-        $process->setTimeout(300);
+        $process->setTimeout(3600);
         $process->run();
 
         if (!$process->isSuccessful()) {
